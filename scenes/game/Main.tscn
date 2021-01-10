@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/game/Main.gd" type="Script" id=1]
+[ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/player/PlayerMirror.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/player/Pill.tscn" type="PackedScene" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="bg" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -501.0
+margin_top = -552.0
+margin_right = 2955.0
+margin_bottom = 1448.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+
+[node name="PlayerMirror" parent="." instance=ExtResource( 3 )]
+
+[node name="Pill" parent="." instance=ExtResource( 4 )]
+position = Vector2( 924.936, -55.7095 )
+[connection signal="die" from="Player" to="." method="on_die"]
+[connection signal="jumping" from="Player" to="." method="on_jumping"]
+[connection signal="landing" from="Player" to="." method="on_landing"]
+[connection signal="die" from="PlayerMirror" to="." method="on_die"]
+[connection signal="body_entered" from="Pill" to="." method="_on_Pill_body_entered"]

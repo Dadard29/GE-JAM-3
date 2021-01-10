@@ -1,0 +1,149 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/font/RobotoMono-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/font/mono.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/player/player.png" type="Texture" id=3]
+[ext_resource path="res://scenes/game/MainMenu.gd" type="Script" id=4]
+[ext_resource path="res://assets/font/entry_default.tres" type="StyleBox" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 96
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "BouncingThumb"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 0.5, 2, 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 400, 480 ), Vector2( 400, 120 ), Vector2( 400, 480 ), Vector2( 400, 780 ), Vector2( 400, 480 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 2, 0.5, 2, 0.5, 2 ),
+"update": 0,
+"values": [ 0.0, 180.0, 360.0, 540.0, 720.0 ]
+}
+
+[node name="MainMenu" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+
+[node name="LeftSide" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_right = 928.0
+margin_bottom = 560.0
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/LeftSide"]
+margin_top = 75.0
+margin_right = 928.0
+margin_bottom = 203.0
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 2 )
+text = "The dream matrix"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/LeftSide"]
+margin_top = 282.0
+margin_right = 928.0
+margin_bottom = 560.0
+size_flags_vertical = 3
+custom_constants/margin_left = 100
+
+[node name="Entries" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftSide/MarginContainer"]
+margin_left = 100.0
+margin_right = 928.0
+margin_bottom = 278.0
+
+[node name="Margin1" type="MarginContainer" parent="MarginContainer/HBoxContainer/LeftSide/MarginContainer/Entries"]
+margin_right = 828.0
+margin_bottom = 85.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="NewGame" type="Label" parent="MarginContainer/HBoxContainer/LeftSide/MarginContainer/Entries/Margin1"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 818.0
+margin_bottom = 75.0
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 2 )
+text = "New game"
+uppercase = true
+
+[node name="Margin2" type="MarginContainer" parent="MarginContainer/HBoxContainer/LeftSide/MarginContainer/Entries"]
+margin_top = 89.0
+margin_right = 828.0
+margin_bottom = 174.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="Exit" type="Label" parent="MarginContainer/HBoxContainer/LeftSide/MarginContainer/Entries/Margin2"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 818.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 2 )
+text = "Exit"
+uppercase = true
+
+[node name="RightSide" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 932.0
+margin_right = 984.0
+margin_bottom = 560.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="Sprite" type="Sprite" parent="MarginContainer/HBoxContainer/RightSide"]
+position = Vector2( 400, 204.169 )
+rotation = 5.4452
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": "3"
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/HBoxContainer/RightSide"]
+anims/BouncingThumb = SubResource( 3 )

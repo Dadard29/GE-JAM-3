@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/game/Win.gd" type="Script" id=1]
+[ext_resource path="res://assets/font/RobotoMono-Bold.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 96
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 3 )
+
+[node name="Win" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+
+[node name="Margin" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+margin_right = 984.0
+margin_bottom = 128.0
+custom_constants/margin_bottom = 0
+
+[node name="Win" type="Label" parent="MarginContainer/HBoxContainer/Margin"]
+margin_right = 984.0
+margin_bottom = 128.0
+custom_fonts/font = SubResource( 2 )
+text = "WON!"
+uppercase = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_top = 132.0
+margin_right = 984.0
+margin_bottom = 165.0
+size_flags_horizontal = 3
+
+[node name="Margin1" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+margin_right = 984.0
+margin_bottom = 33.0
+
+[node name="MainMenu" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Margin1"]
+margin_right = 984.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 3 )
+text = "press enter to return to main menu"
+uppercase = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+margin_top = 169.0
+margin_right = 984.0
+margin_bottom = 169.0
+size_flags_horizontal = 3
+
+[node name="Sprite" type="Sprite" parent="MarginContainer/HBoxContainer/MarginContainer"]
+position = Vector2( 20, 20 )

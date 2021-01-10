@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/font/mono.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/game/Popup.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="Popup" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_right = 490.0
+margin_bottom = 560.0
+size_flags_horizontal = 3
+
+[node name="Margin1" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+margin_right = 490.0
+margin_bottom = 65.0
+
+[node name="Restart" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Margin1"]
+margin_right = 490.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 1 )
+text = "Restart"
+uppercase = true
+
+[node name="Margin2" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 69.0
+margin_right = 490.0
+margin_bottom = 134.0
+
+[node name="MainMenu" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Margin2"]
+margin_right = 490.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 1 )
+text = "Main Menu"
+uppercase = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 494.0
+margin_right = 984.0
+margin_bottom = 560.0
+size_flags_horizontal = 3
+
+[node name="Sprite" type="Sprite" parent="MarginContainer/HBoxContainer/MarginContainer"]
+position = Vector2( 20, 20 )
